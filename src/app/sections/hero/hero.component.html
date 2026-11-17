@@ -1,0 +1,39 @@
+
+<section id="sobre" aria-labelledby="titulo-sobre">
+
+  <h1 id="titulo-sobre" [attr.aria-label]="site.name">
+    <span aria-hidden="true">{{ displayedName() }}</span>
+    @if (!nameFinished()) {
+      <span class="cursor" aria-hidden="true">|</span>
+    }
+  </h1>
+
+  <p class="role"
+     [attr.aria-label]="site.role + ' · ' + site.city">
+
+    <span aria-hidden="true">{{ displayedRole() }}</span>
+
+    @if (nameFinished()) {
+      <span class="cursor" aria-hidden="true">|</span>
+    }
+
+  </p>
+
+  <p class="lead">{{ summary }}</p>
+
+  <div class="actions">
+    <a class="btn"
+       [href]="site.cvUrl"
+       target="_blank"
+       rel="noopener">
+      Ver currículo
+    </a>
+
+    <a class="btn btn--ghost"
+       [href]="site.cvUrl"
+       download>
+      Baixar currículo (PDF)
+    </a>
+  </div>
+
+</section>

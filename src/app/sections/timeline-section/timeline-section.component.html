@@ -1,0 +1,36 @@
+
+<section id="carreira" aria-labelledby="titulo-carreira">
+
+  <h2 id="titulo-carreira">Minha trajetória</h2>
+
+  <app-chip-filter
+    label="Filtrar linha do tempo"
+    [options]="filterOptions"
+    [(value)]="filter"
+  />
+
+  <ol
+    #timeline
+    class="timeline"
+    [style.--timeline-progress]="timelineProgress()"
+  >
+
+    @for (item of visibleItems(); track item.title) {
+
+      <li
+        #stepElement
+        class="step"
+        [class.step--estudo]="item.kind === 'estudo'"
+        [class.step--active]="activeSteps().has(item.title)"
+        [attr.data-title]="item.title"
+      >
+
+        <app-timeline-item [item]="item" />
+
+      </li>
+
+    }
+
+  </ol>
+
+</section>

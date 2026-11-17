@@ -1,0 +1,64 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// --gutter = margem lateral do header. Usada também pelo menu e pelos ícones.
+:host {
+  --gutter: clamp(1rem, 4vw, 3rem);
+  position: sticky; top: 0; z-index: 5; display: block;
+}
+
+.header {
+  padding-inline: var(--gutter);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+// Linha de cima: logo à esquerda, menu à direita.
+.bar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0.5rem 1rem; padding-block: 0.6rem;
+}
+
+.logo {
+  display: inline-flex; align-items: baseline; gap: 0.5rem;
+  text-decoration: none; color: var(--color-text);
+
+  &__mark { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--color-primary); }
+  &__name { font-weight: 600; }
+}
+
+// Hambúrguer: visível só em tela pequena.
+.burger {
+  display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; padding: 0;
+  color: var(--color-text); background: transparent;
+  border: 1px solid var(--color-border); border-radius: var(--radius-md); cursor: pointer;
+
+  svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+
+  @include from($breakpoint-sm) { display: none; }
+}
+
+// Menu.
+// Celular: painel flutuante por cima do conteúdo, logo abaixo da linha do header.
+// Ele termina 3.5rem antes da borda direita, deixando livre a coluna do ícone de acessibilidade.
+.menu {
+  position: absolute; top: 100%; left: var(--gutter); right: calc(var(--gutter) + 3.5rem);
+  display: none; flex-direction: column; gap: 0.2rem;
+  margin-top: 0.5rem; padding: 0.5rem 1rem;
+  background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+
+  &--open { display: flex; }
+
+  a { padding: 0.5rem 0; color: var(--color-text); font-weight: 600; text-decoration: none; }
+
+  // Tela maior: volta a ser uma linha comum dentro do header.
+  @include from($breakpoint-sm) {
+    position: static; display: flex; flex-direction: row; gap: 1.2rem;
+    margin: 0; padding: 0; background: none; border: 0;
+    a { padding: 0; }
+  }
+}
+
+// Fica logo abaixo da linha do header, por cima do conteúdo, no canto direito.
+// O :host é sticky (posicionado), então top: 100% = logo abaixo da linha.
+.tools { position: absolute; top: 100%; right: var(--gutter); padding-top: 0.5rem; }

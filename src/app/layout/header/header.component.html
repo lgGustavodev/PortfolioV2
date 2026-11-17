@@ -1,0 +1,33 @@
+
+<header class="header" (keydown.escape)="closeMenu()">
+  <div class="bar">
+    <a class="logo" href="#sobre">
+      <span class="logo__mark">LG</span>
+      <span class="logo__name">Luis Gustavo</span>
+    </a>
+
+    <button #burger type="button" class="burger" aria-controls="menu-principal"
+            [attr.aria-expanded]="menuOpen()"
+            [attr.aria-label]="menuOpen() ? 'Fechar menu' : 'Abrir menu'"
+            (click)="toggleMenu()">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        @if (menuOpen()) {
+          <path d="M6 6l12 12M18 6L6 18" />
+        } @else {
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        }
+      </svg>
+    </button>
+
+    <nav id="menu-principal" class="menu" [class.menu--open]="menuOpen()" aria-label="Principal">
+      @for (link of links; track link.href) {
+        <a [href]="link.href">{{ link.label }}</a>
+      }
+    </nav>
+  </div>
+
+ 
+</header> 
+<div class="tools">
+    <app-accessibility-toolbar />
+  </div>

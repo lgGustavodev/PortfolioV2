@@ -1,0 +1,43 @@
+<div class="toolbar" (keydown.escape)="close()">
+  <button type="button" class="trigger" aria-controls="painel-acessibilidade"
+          aria-label="Opções de acessibilidade"
+          [attr.aria-expanded]="open()" (click)="toggle()">
+    <!-- Ícone de acesso universal: dois círculos e uma pessoa de braços abertos -->
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="11" />
+      <circle cx="12" cy="12" r="9.2" />
+      <circle cx="12" cy="7.2" r="1.4" />
+      <path d="M7 10.2h10M12 10.2v3.4M12 13.6l-2.4 4.2M12 13.6l2.4 4.2" />
+    </svg>
+  </button>
+
+  @if (open()) {
+    <div id="painel-acessibilidade" class="panel" role="group" aria-label="Preferências de leitura">
+      <button type="button" class="icon-btn" (click)="theme.toggle()"
+              [attr.aria-label]="theme.isDark() ? 'Ativar tema claro' : 'Ativar tema escuro'">
+        @if (theme.isDark()) {
+          <!-- Sol -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+          </svg>
+        } @else {
+          <!-- Lua -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+          </svg>
+        }
+      </button>
+
+      <button type="button" class="icon-btn" aria-label="Aumentar fonte"
+              [disabled]="!font.canIncrease()" (click)="font.increase()">
+        <span aria-hidden="true">A+</span>
+      </button>
+
+      <button type="button" class="icon-btn" aria-label="Diminuir fonte"
+              [disabled]="!font.canDecrease()" (click)="font.decrease()">
+        <span aria-hidden="true">A−</span>
+      </button>
+    </div>
+  }
+</div>

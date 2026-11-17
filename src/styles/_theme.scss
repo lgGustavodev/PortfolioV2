@@ -1,0 +1,29 @@
+// Paleta de cores. Usamos CSS custom properties (e não $variáveis)
+// porque o tema claro/escuro troca em tempo de execução.
+:root {
+  --color-bg: #f2f6f8;
+  --color-surface: #ffffff;
+  --color-text: #12202b;
+  --color-text-muted: #4a5b68;
+  --color-primary: #0b6e99;
+  --color-on-primary: #ffffff;
+  --color-highlight: #d98e04;
+  --color-border: #cdd9e0;
+
+  --radius-md: 10px;
+  --font-heading: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --font-body: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #0f1c26;
+  --color-surface: #172836;
+  --color-text: #eaf1f5;
+  --color-text-muted: #a9bac6;
+  --color-primary: #5cc3ee;
+  --color-on-primary: #082331;
+  --color-highlight: #f2b33d;
+  --color-border: #2c4152;
+  color-scheme: dark;
+}
