@@ -1,7 +1,0 @@
-1) Descompacte esta pasta.
-2) Abra o terminal DENTRO da pasta "portfolio".
-3) Rode: npm install
-4) Rode: npm start
-5) Abra http://localhost:4200
-Estilos globais: src/styles/_theme.scss (cores)
-Conteudo: dentro de cada componente em src/app/sections/
