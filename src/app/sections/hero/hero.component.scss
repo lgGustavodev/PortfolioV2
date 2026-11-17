@@ -1,3 +1,7 @@
+:host { display: block; text-align: center; }
+
+.role,
+.lead { margin-inline: auto; }
 
 .cursor {
   display: inline-block;
@@ -17,4 +21,12 @@
   .cursor {
     animation: none;
   }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;           // permite quebrar linha quando falta espaço (celular)
+  justify-content: center;   // centraliza os botões
+  gap: 1rem;                 // espaço entre eles, na horizontal e na vertical
+  margin-top: 1.5rem;        // afasta os botões do parágrafo de cima
 }

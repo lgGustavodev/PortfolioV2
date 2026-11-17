@@ -1,8 +1,14 @@
-.filters { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.filters { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
 
 .chip {
   font: inherit; cursor: pointer; color: var(--color-text); background: transparent;
   border: 1px solid var(--color-border); border-radius: 999px; padding: 0.25rem 0.9rem;
+
+  // Se a borda mudar de cor, a troca leva 0.2s em vez de ser instantânea.
+  transition: border-color 0.2s ease;
+
+  // Ao passar o mouse, a borda assume a cor primária do tema.
+  &:hover { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); }
 
   &[aria-pressed='true'] { background: var(--color-text); color: var(--color-bg); }
 }

@@ -1,4 +1,4 @@
 :host { display: block; }
-p { margin: 0.2rem 0; }
+p { margin: 0.2rem auto; }   // era "0.2rem 0": agora centraliza a caixa também
 .period { font-weight: 700; color: var(--color-text-muted); }
 .place { font-weight: 600; color: var(--color-primary); }

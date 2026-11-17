@@ -2,11 +2,15 @@
 :host {
   display: block;
   padding-block: 3.5rem;
+  text-align: center;   // centraliza o título e é herdado pelos itens
 }
+
+h2 { text-align: center; }
 
 .timeline {
   position: relative;
-  margin: 0;
+  max-width: 40rem;        // lista mais estreita: a linha fica perto do texto
+  margin: 0 auto;          // centraliza a CAIXA da lista (antes era "margin: 0")
   padding: 0 0 0 1.6rem;
   list-style: none;
 

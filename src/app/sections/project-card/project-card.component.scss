@@ -4,6 +4,17 @@
 .card {
   display: flex; flex-direction: column; height: 100%; padding: 1.2rem;
   background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+
+  // Diz ao navegador: "se transform ou border-color mudarem, faça a troca em 0.2s".
+  transition: transform 0.2s ease, border-color 0.2s ease;
+
+  // :focus-within = quando um link dentro do card recebe foco pelo teclado.
+  // Assim quem navega com Tab também vê o efeito.
+  &:hover,
+  &:focus-within {
+    transform: translateY(-4px);          // sobe 4px (valor negativo = para cima)
+    border-color: var(--color-primary);   // a borda assume a cor primária do tema
+  }
 }
 
 p { margin: 0.4rem 0 0.8rem; }
